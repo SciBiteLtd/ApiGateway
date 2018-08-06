@@ -1,5 +1,5 @@
 # apigateway
-This application was generated using JHipster 4.14.5, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.5](http://www.jhipster.tech/documentation-archive/v4.14.5).
+This application was generated using JHipster 5.1.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.1.0](https://www.jhipster.tech/documentation-archive/v5.1.0).
 
 This is a "gateway" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
 
@@ -20,7 +20,6 @@ You will only need to run this command when dependencies change in [package.json
     yarn install
 
 We use yarn scripts and [Webpack][] as our build system.
-
 
 Run the following commands in two separate terminals to create a blissful development experience where your browser
 auto-refreshes when files change on your hard drive.
@@ -44,13 +43,13 @@ Service workers are commented by default, to enable them please uncomment the fo
 <script>
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-        .register('./sw.js')
+        .register('./service-worker.js')
         .then(function() { console.log('Service Worker Registered'); });
     }
 </script>
 ```
 
-Note: workbox creates the respective service worker and dynamically generate the `sw.js`
+Note: workbox creates the respective service worker and dynamically generate the `service-worker.js`
 
 ### Managing dependencies
 
@@ -95,7 +94,7 @@ will generate few files:
 
 To optimize the apigateway application for production, run:
 
-    ./gradlew -Pprod clean bootRepackage
+    ./gradlew -Pprod clean bootWar
 
 This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
 To ensure everything worked, run:
@@ -114,7 +113,7 @@ To launch your application's tests, run:
 
 ### Client tests
 
-Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
+Unit tests are run by [Jest][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
 
     yarn test
 
@@ -137,7 +136,7 @@ To stop it and remove the container, run:
 You can also fully dockerize your application and all the services that it depends on.
 To achieve this, first build a docker image of your app by running:
 
-    ./gradlew bootRepackage -Pprod buildDocker
+    ./gradlew bootWar -Pprod buildDocker
 
 Then run:
 
@@ -149,14 +148,14 @@ For more information refer to [Using Docker and Docker-Compose][], this page als
 
 To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
 
-[JHipster Homepage and latest documentation]: http://www.jhipster.tech
-[JHipster 4.14.5 archive]: http://www.jhipster.tech/documentation-archive/v4.14.5
-[Doing microservices with JHipster]: http://www.jhipster.tech/documentation-archive/v4.14.5/microservices-architecture/
-[Using JHipster in development]: http://www.jhipster.tech/documentation-archive/v4.14.5/development/
-[Using Docker and Docker-Compose]: http://www.jhipster.tech/documentation-archive/v4.14.5/docker-compose
-[Using JHipster in production]: http://www.jhipster.tech/documentation-archive/v4.14.5/production/
-[Running tests page]: http://www.jhipster.tech/documentation-archive/v4.14.5/running-tests/
-[Setting up Continuous Integration]: http://www.jhipster.tech/documentation-archive/v4.14.5/setting-up-ci/
+[JHipster Homepage and latest documentation]: https://www.jhipster.tech
+[JHipster 5.1.0 archive]: https://www.jhipster.tech/documentation-archive/v5.1.0
+[Doing microservices with JHipster]: https://www.jhipster.tech/documentation-archive/v5.1.0/microservices-architecture/
+[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v5.1.0/development/
+[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v5.1.0/docker-compose
+[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v5.1.0/production/
+[Running tests page]: https://www.jhipster.tech/documentation-archive/v5.1.0/running-tests/
+[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v5.1.0/setting-up-ci/
 
 
 [Node.js]: https://nodejs.org/
@@ -164,7 +163,7 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [Webpack]: https://webpack.github.io/
 [Angular CLI]: https://cli.angular.io/
 [BrowserSync]: http://www.browsersync.io/
-[Karma]: http://karma-runner.github.io/
+[Jest]: https://facebook.github.io/jest/
 [Jasmine]: http://jasmine.github.io/2.0/introduction.html
 [Protractor]: https://angular.github.io/protractor/
 [Leaflet]: http://leafletjs.com/
