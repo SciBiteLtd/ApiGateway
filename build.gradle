@@ -1,6 +1,9 @@
 import org.gradle.internal.os.OperatingSystem
 
 buildscript {
+    ext.kotlin_version = '1.2.60'
+
+
     repositories {
         mavenLocal()
         jcenter()
@@ -12,6 +15,7 @@ buildscript {
         classpath "io.spring.gradle:propdeps-plugin:0.0.10.RELEASE"
         classpath "gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.5.1"
         //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -22,10 +26,12 @@ plugins {
     id "net.ltgt.apt" version "0.15"
     id "io.spring.dependency-management" version "1.0.5.RELEASE"
     id "com.moowork.node" version "1.2.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.2.60'
     //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
 apply plugin: 'java'
+apply plugin: 'kotlin'
 sourceCompatibility=1.8
 targetCompatibility=1.8
 // Until JHipster supports JDK 9
@@ -220,7 +226,9 @@ dependencies {
     testCompile "org.mockito:mockito-core"
     testCompile "com.mattbertolini:liquibase-slf4j"
     testCompile "org.hamcrest:hamcrest-library"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
+    compile "com.sparkjava:spark-kotlin:1.0.0-alpha"
 }
 
 task cleanResources(type: Delete) {
@@ -246,3 +254,13 @@ if (project.hasProperty('nodeInstall')) {
 compileJava.dependsOn processResources
 processResources.dependsOn cleanResources,bootBuildInfo
 bootBuildInfo.mustRunAfter cleanResources
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
