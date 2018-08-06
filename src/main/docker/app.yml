@@ -1,0 +1,14 @@
+version: '2'
+services:
+    apigateway-app:
+        image: apigateway
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://apigateway-postgresql:5432/apigateway
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    apigateway-postgresql:
+        extends:
+            file: postgresql.yml
+            service: apigateway-postgresql
