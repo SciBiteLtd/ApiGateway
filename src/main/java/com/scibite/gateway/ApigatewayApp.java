@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.core.env.Environment;
 
 import javax.annotation.PostConstruct;
@@ -18,6 +19,7 @@ import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.Collection;
 
+@EnableZuulProxy
 @SpringBootApplication
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 public class ApigatewayApp {
