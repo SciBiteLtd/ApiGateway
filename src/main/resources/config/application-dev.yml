@@ -69,17 +69,6 @@ spring:
             discovery:
                 enabled: true
 
-# ===================================================================
-# Static routes to other services
-# ===================================================================
-zuul:
-    routes:
-        termite:
-            url: http://127.0.0.1:4567
-
-ribbon:
-    eureka:
-        enabled: false
 
 # ===================================================================
 # To enable SSL, generate a certificate using:
@@ -166,3 +155,17 @@ jhipster:
 # ===================================================================
 
 # application:
+
+# ===================================================================
+# Static routes to other services
+# ===================================================================
+zuul:
+    routes:
+        termite:
+            url: http://127.0.0.1:4567
+            #If you service does not need the authoriztion token, consider removing the sensitive headers
+            sensitiveHeaders:
+
+ribbon:
+    eureka:
+        enabled: false

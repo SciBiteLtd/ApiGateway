@@ -80,30 +80,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/content/**")
             .antMatchers("/swagger-ui/index.html")
             .antMatchers("/test/**")
-            .antMatchers("/h2-console/**");
+            .antMatchers("/h2-console/**")
+        ;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
-            .exceptionHandling()
-            .authenticationEntryPoint(problemSupport)
-            .accessDeniedHandler(problemSupport)
-        .and()
+//            If You prefer to not redirect to a login page if not authenticated, just uncomment the exception handling.
+//            .exceptionHandling()
+//            .authenticationEntryPoint(problemSupport)
+//            .accessDeniedHandler(problemSupport)
             .csrf()
-            .disable()
-            .headers()
+                .disable()
+                    .headers()
             .frameOptions()
-            .disable()
+                .disable()
         .and()
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
         .and()
             .authorizeRequests()
             .antMatchers("/api/register").permitAll()
             .antMatchers("/api/activate").permitAll()
             .antMatchers("/api/authenticate").permitAll()
+            .antMatchers("/api/logout").permitAll()
             .antMatchers("/api/account/reset-password/init").permitAll()
             .antMatchers("/api/account/reset-password/finish").permitAll()
             .antMatchers("/api/**").authenticated()
@@ -113,7 +115,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/v2/api-docs/**").permitAll()
             .antMatchers("/swagger-resources/configuration/ui").permitAll()
             .antMatchers("/swagger-ui/index.html").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/termite/api/**").authenticated()
+            .antMatchers("/termite/api/**").hasAuthority(AuthoritiesConstants.ADMIN)
+        .and()
+            .formLogin()
+            .loginPage("/#")
+        .and()
+            .logout()
+                .logoutUrl("/api/logout")
+                .deleteCookies("JSESSIONID", "jwt")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
         .and()
             .apply(securityConfigurerAdapter());
 
