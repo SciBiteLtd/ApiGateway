@@ -1,0 +1,244 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-08-09T11:26:41.914Z",
+	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"resources": [
+		{
+			"_id": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"created": 1533715208839,
+			"description": "",
+			"modified": 1533715208839,
+			"name": "Api Gateway",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_24071a6a1e784b6da840fddf9fc0a8bd",
+			"color": null,
+			"created": 1533715208863,
+			"data": {},
+			"isPrivate": false,
+			"metaSortKey": 1533715208863,
+			"modified": 1533715208863,
+			"name": "New Environment",
+			"parentId": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_6e1dd92c3a1944c6af578f5b89ab5dd5",
+			"cookies": [
+				{
+					"creation": "2018-08-09T09:51:53.108Z",
+					"domain": "localhost",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "920099461062021",
+					"key": "JSESSIONID",
+					"lastAccessed": "2018-08-09T11:19:31.909Z",
+					"path": "/",
+					"value": "node01svzfvnzw5qctf09er2g93s8a4.node0"
+				},
+				{
+					"creation": "2018-08-09T11:19:10.653Z",
+					"domain": "localhost",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "6881471356741293",
+					"key": "jwt",
+					"lastAccessed": "2018-08-09T11:19:29.235Z",
+					"maxAge": 0,
+					"path": "/",
+					"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTUzNjQwNTU1OX0.3FLnYH5a8SMzd1orpObqFUlDE0R48UpxD7dauL7Bfi5tZzutiOMHdZKZmJQIVUG7-bpCbQ3A2Dc52jEUkhhSaw"
+				}
+			],
+			"created": 1533715208865,
+			"modified": 1533813894879,
+			"name": "Default Jar",
+			"parentId": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_f5f2a8fc345743b794997875fec38bad",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"password\": \"admin\",\n\t\"rememberMe\": true,\n\t\"username\": \"admin\"\n}"
+			},
+			"created": 1533715293186,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_3e43578766d24032bb86df923f58065e",
+					"name": "accept",
+					"value": "application/json"
+				},
+				{
+					"id": "pair_39cf56bbb1c24440ba18bc6c656e1799",
+					"name": "authorization",
+					"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTUzMjA3Mzc5NX0.L5OXUuouVoghWwtP9W9-c524gLcg0__5CspjA3ZmqWtFLt3pUtbPfWx_lLD04AB2V0p4fckRJpdejYwh8UyjUQ"
+				},
+				{
+					"id": "pair_eb196891c5144b559bf23a4c69a8afda",
+					"name": "content-type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1533715370320.25,
+			"method": "POST",
+			"modified": 1533813876220,
+			"name": "Request JWT Token",
+			"parameters": [],
+			"parentId": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/authenticate",
+			"_type": "request"
+		},
+		{
+			"_id": "req_84b92fe3d98a4f60ad289df0b14e211c",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1533721521924,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1533715344575.5,
+			"method": "GET",
+			"modified": 1533813582923,
+			"name": "session get",
+			"parameters": [],
+			"parentId": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/termite/api",
+			"_type": "request"
+		},
+		{
+			"_id": "req_382300a3fea64ea9a909fd1de6264337",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1533733332963,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1533715370295.25,
+			"method": "GET",
+			"modified": 1533813568616,
+			"name": "logout",
+			"parameters": [],
+			"parentId": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/logout",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7f19f97a034a4df7bf999d8f3a663d0e",
+			"authentication": {
+				"disabled": false,
+				"prefix": "",
+				"token": "{% response 'body', 'req_f5f2a8fc345743b794997875fec38bad', '$.id_token' %}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1533733662148,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1533715370270.25,
+			"method": "GET",
+			"modified": 1533813570789,
+			"name": "stateless get",
+			"parameters": [],
+			"parentId": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/termite/api",
+			"_type": "request"
+		},
+		{
+			"_id": "req_bb38040013b5473881ed9d14c0063a09",
+			"authentication": {
+				"disabled": false,
+				"prefix": "",
+				"token": "{% response 'body', 'req_f5f2a8fc345743b794997875fec38bad', '$.id_token' %}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1533735026230,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1533715357422.875,
+			"method": "GET",
+			"modified": 1533813575317,
+			"name": "stateless current user",
+			"parameters": [],
+			"parentId": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/termite/api/currentUser",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b8d42aa832ec49c9b36f37d4558827e0",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1533801406178,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1533715350999.1875,
+			"method": "GET",
+			"modified": 1533813901958,
+			"name": "session current user",
+			"parameters": [],
+			"parentId": "wrk_0b79dd27a7044a33a8850ce43874761e",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/termite/api/currentUser",
+			"_type": "request"
+		}
+	]
+}
