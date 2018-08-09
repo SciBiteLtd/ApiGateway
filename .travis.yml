@@ -36,7 +36,7 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: $deploy.api_key.secure
+    secure: auNxdIYnU4163JSskSpycl0A3x+VXCWIQujzMo5OSmS9g+rEDI2loiBcLfTbWlwt/mGiW/MeboyU483fevihdV3afAIypM4wzyimMnnVPHgJBQGoh19jGr2JyJRLRuJze7B9xaCRyW0AmdblboxUqG8664BMqt9wIdBKAvvTXZVTw+EWSv0mio4wLhOo/7o2LmkqJF+FxyQ29Iewd/80Fcktvwrsf5QCHG3XKqb/Z9Ioq5Uh/KZzc5xMF0sZDGMOtQDd6Xt0zghT9JLLYA/4YzpqnsWynEnR0MvKR9PfpjdRBhmace49u5sHOdAX/XS/4G1rRjRfTR69XthprDIff3520+U0t6mn2HThtCwDbft406AjfkkzutpVRLdM30XTebfYg/JbnZAj0H0kQnzyVTFis9y0bmn4Fz4PxY2udXGTIA2vXZXjdIXWfN1fwBPngjUtOXNsYgCbaipXopylUS2VkckcsPItAMF0M5gs6rIl1XwPI0GnRmzA3o/ICKFcU0giC8razSOGeMB0Sy+uV3jZFIUzDNdCvo7A0/teg2TboVCoX8wxVtoH3omV+yGa/0uMiKMM8LYMsrWM1qWffcjGFi9CjF42v64gHbhxXaDxHkoLunIeqeZ3RfBg+IbYcR5yGYTInYT6zMkGM47siHETmPzKWi+RWHBLDQiHGGc=
   file_glob: true
   file: build/libs/*
   on:
