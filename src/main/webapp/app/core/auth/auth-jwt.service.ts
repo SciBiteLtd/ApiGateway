@@ -3,12 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { CookieService } from 'ngx-cookie';
 
 import { SERVER_API_URL } from 'app/app.constants';
 
 @Injectable({ providedIn: 'root' })
 export class AuthServerProvider {
-    constructor(private http: HttpClient, private $localStorage: LocalStorageService, private $sessionStorage: SessionStorageService) {}
+    constructor(
+        private http: HttpClient,
+        private $localStorage: LocalStorageService,
+        private $sessionStorage: SessionStorageService,
+        private cookieStorage: CookieService
+    ) {}
 
     getToken() {
         return this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken');
@@ -47,13 +53,16 @@ export class AuthServerProvider {
         } else {
             this.$sessionStorage.store('authenticationToken', jwt);
         }
+        this.cookieStorage.put('jwt', jwt);
     }
 
     logout(): Observable<any> {
         return new Observable(observer => {
             this.$localStorage.clear('authenticationToken');
             this.$sessionStorage.clear('authenticationToken');
-            observer.complete();
+            this.http.get(`${SERVER_API_URL}api/logout`, { responseType: 'text' }).subscribe(resp => {
+                observer.complete();
+            });
         });
     }
 }

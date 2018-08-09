@@ -94,6 +94,12 @@ public class AccountResource {
         return request.getRemoteUser();
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        log.debug("Logging out the user");
+        return "Logout Sucessful";
+    }
+
     /**
      * GET  /account : get the current user.
      *
