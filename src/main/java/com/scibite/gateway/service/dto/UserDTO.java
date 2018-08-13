@@ -1,14 +1,15 @@
 package com.scibite.gateway.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.scibite.gateway.config.Constants;
-
 import com.scibite.gateway.domain.Authority;
 import com.scibite.gateway.domain.User;
+import org.apache.commons.lang.StringUtils;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-
-import javax.validation.constraints.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -34,6 +35,9 @@ public class UserDTO {
     @Email
     @Size(min = 5, max = 254)
     private String email;
+
+    @JsonProperty(access= JsonProperty.Access.WRITE_ONLY)
+    private String password;
 
     @Size(max = 256)
     private String imageUrl;
@@ -63,6 +67,9 @@ public class UserDTO {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
+        if (!StringUtils.isEmpty(user.getPassword())) {
+            this.password = user.getPassword();
+        }
         this.activated = user.getActivated();
         this.imageUrl = user.getImageUrl();
         this.langKey = user.getLangKey();
@@ -179,21 +186,30 @@ public class UserDTO {
         this.authorities = authorities;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
-            "login='" + login + '\'' +
+            "id=" + id +
+            ", login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
-            ", createdBy=" + createdBy +
+            ", createdBy='" + createdBy + '\'' +
             ", createdDate=" + createdDate +
             ", lastModifiedBy='" + lastModifiedBy + '\'' +
             ", lastModifiedDate=" + lastModifiedDate +
             ", authorities=" + authorities +
-            "}";
+            '}';
     }
 }

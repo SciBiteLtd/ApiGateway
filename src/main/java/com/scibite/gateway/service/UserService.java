@@ -10,6 +10,7 @@ import com.scibite.gateway.security.SecurityUtils;
 import com.scibite.gateway.service.util.RandomUtil;
 import com.scibite.gateway.service.dto.UserDTO;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
@@ -133,8 +134,11 @@ public class UserService {
                 .collect(Collectors.toSet());
             user.setAuthorities(authorities);
         }
-        String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
-        user.setPassword(encryptedPassword);
+        if (StringUtils.isEmpty(userDTO.getPassword())) {
+             user.setPassword(passwordEncoder.encode(RandomUtil.generatePassword()));
+        } else {
+            user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        }
         user.setResetKey(RandomUtil.generateResetKey());
         user.setResetDate(Instant.now());
         user.setActivated(true);
@@ -184,6 +188,9 @@ public class UserService {
                 user.setFirstName(userDTO.getFirstName());
                 user.setLastName(userDTO.getLastName());
                 user.setEmail(userDTO.getEmail());
+                if (!StringUtils.isEmpty(userDTO.getPassword())) {
+                    user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+                }
                 user.setImageUrl(userDTO.getImageUrl());
                 user.setActivated(userDTO.isActivated());
                 user.setLangKey(userDTO.getLangKey());
