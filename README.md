@@ -8,10 +8,9 @@ Service discovery is disabled by default. This gateway has being preconfigure to
 services that do not have any kind of authentication/authorization and you want to protect.
 
 ## Adding a manual route
-To add a manual routing, you have to add a rooting first, as an example, you can check [application-dev.yml](src/main/resources/config/application-dev.yml#L167)
-at the end of the file for an example.
+To add a manual route, first add a new zuul entry, as an example, you can check [application-dev.yml](src/main/resources/config/application-dev.yml#L162) and for more options, check the [documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
 
-Second, you will need to decide what kind of security you ant to add. As an Example, check [SecurityConfiguration.java](src/main/java/com/scibite/gateway/config/SecurityConfiguration.java#L118).
+Second, you will need to decide what kind of security you want to have. As an Example, check [SecurityConfiguration.java](src/main/java/com/scibite/gateway/config/SecurityConfiguration.java#L118).
 You can choose what kind of privileges the application needs.
 
 ## Building for production
