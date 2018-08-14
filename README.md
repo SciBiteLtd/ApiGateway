@@ -1,10 +1,34 @@
 [![Build Status](https://travis-ci.org/jonvallet/ApiGateway.svg?branch=master)](https://travis-ci.org/jonvallet/ApiGateway)
-# apigateway
+# Api Gateway
 This application was generated using JHipster 5.1.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.1.0](https://www.jhipster.tech/documentation-archive/v5.1.0).
 
 This is a "gateway" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
 
-This application is configured for Service Discovery and Configuration with . On launch, it will refuse to start if it is not able to connect to .
+Service discovery is disabled by default. This gateway has being preconfigure to be used as a static frontend for existing
+services that do not have any kind of authentication/authorization and you want to protect.
+
+## Adding a manual route
+To add a manual routing, you have to add a rooting first, as an example, you can check [application-dev.yml](src/main/resources/config/application-dev.yml#L167)
+at the end of the file for an example.
+
+Second, you will need to decide what kind of security you ant to add. As an Example, check [SecurityConfiguration.java](src/main/java/com/scibite/gateway/config/SecurityConfiguration.java#L118).
+You can choose what kind of privileges the application needs.
+
+## Building for production
+
+To optimize the ApiGateway application for production, run:
+
+    ./gradlew -Pprod clean bootWar
+
+This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
+To ensure everything worked, run:
+
+    java -jar build/libs/*.war
+
+Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
+
+Refer to [Using JHipster in production][] for more details.
+
 
 ## Development
 
@@ -90,21 +114,6 @@ will generate few files:
     create src/main/webapp/app/my-component/my-component.component.ts
     update src/main/webapp/app/app.module.ts
 
-
-## Building for production
-
-To optimize the apigateway application for production, run:
-
-    ./gradlew -Pprod clean bootWar
-
-This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
-To ensure everything worked, run:
-
-    java -jar build/libs/*.war
-
-Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
-
-Refer to [Using JHipster in production][] for more details.
 
 ## Testing
 
