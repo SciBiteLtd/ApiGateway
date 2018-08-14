@@ -163,9 +163,9 @@ zuul:
     routes:
         termite:
             url: http://127.0.0.1:4567
-            #If you service does not need the authoriztion token, consider removing the sensitive headers
+            #If you service does not need the authorization token, consider removing the sensitive headers
+            stripPrefix: false
             sensitiveHeaders:
-
 ribbon:
     eureka:
         enabled: false
