@@ -22,7 +22,7 @@ To add a manual route, first add a new zuul entry, as an example, you can check 
 Second, you will need to decide what kind of security you want to have. As an Example, check [SecurityConfiguration.java](src/main/java/com/scibite/gateway/config/SecurityConfiguration.java#L118).
 You can choose what kind of privileges the application needs.
 
-You can start the service (dev profile) and try to access [http://localhost:8080/ols](http://localhost:8080/ols).git  
+You can start the service (dev profile) and try to access [http://localhost:8080/ols](http://localhost:8080/ols).  
 If you are not authenticated, you will be redirect to the home page. Logging and try again.
 
 ## Building for production
