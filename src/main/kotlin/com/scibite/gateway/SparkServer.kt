@@ -9,15 +9,15 @@ import spark.kotlin.ignite
 fun main(args: Array<String>) {
     val http: Http = ignite()
 
-    http.get("/termite") {
+    http.get("/") {
         "Hello Spark Kotlin!"
     }
 
-    http.get("/termite/api") {
+    http.get("/api") {
         "Successful!"
     }
 
-    http.get("/termite/api/currentUser") {
+    http.get("/api/currentUser") {
         "You are succesfully authenticated with following information: ${getUserInfo(request)}"
     }
 }
