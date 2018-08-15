@@ -164,8 +164,13 @@ zuul:
         termite:
             url: http://127.0.0.1:4567
             #If you service does not need the authorization token, consider removing the sensitive headers
-            stripPrefix: false
             sensitiveHeaders:
+        ols:
+            url: https://www.ebi.ac.uk
+            stripPrefix: false
+        artifactory:
+            url: http://leia.scibite.com:8081
+            stripPrefix: false
 ribbon:
     eureka:
         enabled: false
