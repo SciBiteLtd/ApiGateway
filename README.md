@@ -7,6 +7,15 @@ This is a "gateway" application intended to be part of a microservice architectu
 Service discovery is disabled by default. This gateway has being preconfigure to be used as a static frontend for existing
 services that do not have any kind of authentication/authorization and you want to protect.
 
+## Quick Start
+Install [Node.js][]and [Yarn][], then run the following commands
+```bash
+yarn install
+yarn build
+./gradlew
+```
+Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
+
 ## Adding a manual route
 To add a manual route, first add a new zuul entry, as an example, you can check [application-dev.yml](src/main/resources/config/application-dev.yml#L162) and for more options, check the [documentation](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html).
 
@@ -26,8 +35,6 @@ This will concatenate and minify the client CSS and JavaScript files. It will al
 To ensure everything worked, run:
 
     java -jar build/libs/*.war
-
-Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 
 Refer to [Using JHipster in production][] for more details.
 
